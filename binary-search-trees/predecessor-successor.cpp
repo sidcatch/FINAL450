@@ -149,7 +149,7 @@ int main()
     root1->right->left = new Node(55);
     root1->right->right = new Node(70);
 
-    findPredSucc(root1, 55);
+    findPredSuccItr(root1, 55);
 
     return 0;
 }
