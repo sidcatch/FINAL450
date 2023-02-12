@@ -1,4 +1,6 @@
 #include <iostream>
+#include <limits.h>
+
 using namespace std;
 
 struct Stack
@@ -17,7 +19,10 @@ struct Stack
 
     int pop()
     {
-        return elms[top--];
+        if (!this->empty())
+            return elms[top--];
+        else
+            return INT_MIN;
     }
 
     void print()
@@ -26,6 +31,11 @@ struct Stack
             for (int i = top; i >= 0; i--)
                 cout << elms[i] << " ";
         cout << endl;
+    }
+
+    bool empty()
+    {
+        return this->top == -1;
     }
 };
 
