@@ -62,11 +62,12 @@ struct Queue
             return nullptr;
 
         Node *ret = front;
-
+        front->prev = nullptr;
         front = front->next;
 
-        if (front) //Why do we need?
-            front->prev = nullptr;
+        if (front == nullptr)
+            back = nullptr;
+
         ret->next = nullptr;
 
         return ret;
