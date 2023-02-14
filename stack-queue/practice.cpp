@@ -7,7 +7,7 @@ struct Node
     Node *next;
     Node *prev;
 
-    Node(int data, Node *next = nullptr, Node *prev = nullptr)
+    Node(int data, Node *next, Node *prev)
     {
         this->data = data;
         this->next = next;
@@ -17,43 +17,21 @@ struct Node
 
 struct Queue
 {
-    Node *front;
-    Node *back;
 
-    //int size;
-
-    Queue()
-    {
-        front = nullptr;
-        back = nullptr;
-    }
-    Queue(Node *h)
-    {
-        front = h;
-    }
-
-    void print()
-    {
-        Node *p = front;
-
-        while (p != nullptr)
-        {
-            cout << p->data << " ";
-            p = p->next;
-        }
-        cout << endl;
-    }
+    Node *front = nullptr;
+    Node *back = nullptr;
 
     void enqueue(int x)
     {
-        Node *p = new Node(x, nullptr, back);
+        Node *newNode = new Node(x, nullptr, back);
 
         if (back)
-            back->next = p;
-        back = p;
+            back->next = newNode;
+
+        back = newNode;
 
         if (!front)
-            front = p;
+            front = newNode;
     }
 
     Node *dequeue()
@@ -82,16 +60,17 @@ int main()
 
     q.enqueue(1);
 
-    q.print();
+    // q.print();
 
     cout << q.dequeue()->data << endl;
     // cout << q.dequeue()->data << endl;
 
-    // q.enqueue(2);
-    // q.enqueue(3);
+    q.enqueue(2);
+    q.enqueue(3);
 
-    // cout << q.dequeue()->data << endl;
-    // cout << q.dequeue()->data << endl;
+    cout << q.dequeue()->data << endl;
+    cout << q.dequeue()->data << endl;
 
     // q.print();
+    return 0;
 }
