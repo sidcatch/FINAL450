@@ -15,12 +15,11 @@ struct Node
     }
 };
 
-//For a method without using linked list see gfg
 struct Queue
 {
     Node *front = nullptr;
     Node *back = nullptr;
-    Node *middle = nullptr;
+    Node *middle = nullptr; //For even size, back's side is middle here
 
     int size = 0;
 
