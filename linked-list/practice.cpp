@@ -1,5 +1,4 @@
 #include <iostream>
-#include <set>
 using namespace std;
 
 struct Node
@@ -32,12 +31,10 @@ struct LinkList
     {
         Node *p = head;
 
-        int count = 0;
-        while (p != nullptr && count < 20)
+        while (p != nullptr)
         {
             cout << p->data << " ";
             p = p->next;
-            count++;
         }
         cout << endl;
     }
@@ -48,78 +45,29 @@ struct LinkList
         head = p;
     }
 
-    void makeLoop(int k)
+    Node *reverseInGroups(Node *current, int x)
     {
 
-        Node *p = head;
-
-        Node *x = nullptr;
-
+        Node *curr = current;
+        Node *prev = nullptr;
+        Node *next = nullptr;
         int count = 0;
-        while (p->next != nullptr)
+
+        while (curr && count < x)
         {
-            p = p->next;
+            next = curr->next;
+
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
             count++;
-            if (count == k)
-                x = p;
         }
 
-        p->next = x;
-        // head = p;
-    }
+        if (next)
+            current->next = reverseInGroups(next, x);
 
-    Node *findLoop()
-    {
-        Node *tortise = head;
-        Node *hair = head;
-        bool loopDetected = false;
-
-        while (hair != nullptr && hair->next != nullptr)
-        {
-            tortise = tortise->next;
-            hair = hair->next->next;
-
-            if (tortise == hair)
-            {
-                loopDetected = true;
-                break;
-            }
-        }
-
-        if (loopDetected)
-        {
-            tortise = head;
-
-            while (tortise != hair)
-            {
-                tortise = tortise->next;
-                hair = hair->next;
-            }
-
-            return tortise;
-        }
-        else
-
-            return nullptr;
-    }
-
-    Node *findLoopUsingSet()
-    {
-        set<Node *> seen;
-
-        Node *p = head;
-        // seen.insert(p);
-
-        while (p != nullptr)
-        {
-
-            if (seen.find(p) != seen.end())
-                return p;
-
-            seen.insert(p);
-            p = p->next;
-        }
-        return nullptr;
+        return prev;
     }
 };
 
@@ -130,16 +78,6 @@ int main()
     l.push(1);
     l.push(2);
     l.push(3);
-    l.push(1);
-    l.push(2);
-    l.push(3);
-
-    l.makeLoop(2);
 
     l.print();
-
-    cout << l.findLoop()->data;
-    cout << endl;
-    cout << l.findLoopUsingSet()->data;
-    cout << endl;
 }

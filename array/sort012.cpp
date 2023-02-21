@@ -1,51 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// |0|1|1| | | |2|
-//    l   m   h
-
-void sort012(int a[], int arr_size)
+void printArray(int a[], int size)
 {
-    int lo = 0;
-    int hi = arr_size - 1;
-    int mid = 0;
+    for (int i = 0; i < size; i++)
+        cout << a[i] << " ";
+    cout << endl;
+}
 
-    while (mid <= hi)
+void sort012(int a[], int size)
+{
+    int l = -1;
+    int m = 0;
+    int h = size;
+
+    while (m < h)
     {
-        switch (a[mid])
+        switch (a[m])
         {
-
         case 0:
-            swap(a[lo++], a[mid++]);
+            swap(a[++l], a[m++]);
             break;
-
         case 1:
-            mid++;
+            m++;
+            break;
+        case 2:
+            swap(a[--h], a[m]);
             break;
 
-        case 2:
-            swap(a[mid], a[hi--]);
+        default:
             break;
         }
     }
 }
 
-void printArray(int arr[], int arr_size)
-{
-    for (int i = 0; i < arr_size; i++)
-        cout << arr[i] << " ";
-}
-
 int main()
 {
-    int arr[] = {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
 
-    sort012(arr, n);
+    int a[] = {1, 2, 1, 0, 2};
+    int n = 5;
 
-    printArray(arr, n);
-
-    cout << endl;
+    printArray(a, n);
+    sort012(a, n);
+    printArray(a, n);
 
     return 0;
 }
