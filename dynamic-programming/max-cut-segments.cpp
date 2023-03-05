@@ -1,17 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int Max(int a, int b, int c)
-{
-    return max(a, max(a, b));
-}
-
 int findMaximum(int n, int x, int y, int z)
 {
 
     int dp[n + 1];
-
-    memset(dp, -1, sizeof(dp));
 
     dp[0] = 0;
 
@@ -33,12 +26,11 @@ int findMaximum(int n, int x, int y, int z)
     return dp[n];
 }
 
-// Driver Code
 int main()
 {
-    int l = 11, p = 2, q = 3, r = 5;
+    int l = 11, x = 2, y = 3, z = 5;
 
-    int ans = findMaximum(l, p, q, r);
+    int ans = findMaximum(l, x, y, z);
     cout << ans;
 
     return 0;

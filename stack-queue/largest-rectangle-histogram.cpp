@@ -9,7 +9,7 @@ int main()
     int a[] = {6, 2, 5, 4, 5, 1, 6};
 
     int n = sizeof(a) / sizeof(a[0]);
-    int widths[n];
+    // int widths[n];
 
     stack<int> s; // indexes
 
@@ -23,8 +23,10 @@ int main()
             int pos = s.top();
             s.pop();
 
-            widths[pos] = s.empty() ? i : i - s.top() - 1;
-            //Calculate Area here!
+            // widths[pos] = s.empty() ? i : i - s.top() - 1;
+
+            int width = s.empty() ? i : i - s.top() - 1;
+            // Calculate Area here!
         }
     }
 
@@ -33,7 +35,9 @@ int main()
         int pos = s.top();
         s.pop();
 
-        widths[pos] = s.empty() ? i : i - s.top() - 1;
+        // widths[pos] = s.empty() ? i : i - s.top() - 1;
+        int width = s.empty() ? i : i - s.top() - 1;
+
         //Calculate Area here!
     }
 
@@ -41,9 +45,9 @@ int main()
         cout << a[i] << " ";
     cout << endl;
 
-    for (int i = 0; i < n; i++)
-        cout << widths[i] << " ";
-    cout << endl;
+    // for (int i = 0; i < n; i++)
+    //     cout << widths[i] << " ";
+    // cout << endl;
 
     return 0;
 }
