@@ -1,45 +1,44 @@
+// C++ program to find the maximum sum such that
+// no three are consecutive
 #include <bits/stdc++.h>
 using namespace std;
 
-int Max(int a, int b, int c)
+// Returns maximum subsequence sum such that no three
+// elements are consecutive
+int maxSumWO3Consec(int arr[], int n)
 {
-    return max(a, max(a, b));
+    // Stores result for subarray arr[0..i], i.e.,
+    // maximum possible sum in subarray arr[0..i]
+    // such that no three elements are consecutive.
+    int sum[n];
+
+    // Base cases (process first three elements)
+    if (n >= 1)
+        sum[0] = arr[0];
+
+    if (n >= 2)
+        sum[1] = arr[0] + arr[1];
+
+    if (n > 2)
+        sum[2] = max(sum[1], max(arr[1] + arr[2], arr[0] + arr[2]));
+
+    // Process rest of the elements
+    // We have three cases
+    // 1) Exclude arr[i], i.e., sum[i] = sum[i-1]
+    // 2) Exclude arr[i-1], i.e., sum[i] = sum[i-2] + arr[i]
+    // 3) Exclude arr[i-2], i.e., sum[i-3] + arr[i] + arr[i-1]
+    for (int i = 3; i < n; i++)
+        sum[i] = max(max(sum[i - 1], sum[i - 2] + arr[i]),
+                     arr[i] + arr[i - 1] + sum[i - 3]);
+
+    return sum[n - 1];
 }
 
-int findMaximum(int n, int x, int y, int z)
-{
-
-    int dp[n + 1];
-
-    memset(dp, -1, sizeof(dp));
-
-    dp[0] = 0;
-
-    for (int i = 1; i <= n; i++)
-    {
-
-        int p = (i >= x && dp[i - x] != -1) ? dp[i - x] + 1 : -1;
-        int q = (i >= y && dp[i - y] != -1) ? dp[i - y] + 1 : -1;
-        int r = (i >= z && dp[i - z] != -1) ? dp[i - z] + 1 : -1;
-
-        dp[i] = max(p, max(q, r));
-    }
-
-    if (dp[n] == -1)
-    {
-        dp[n] = 0;
-    }
-
-    return dp[n];
-}
-
-// Driver Code
+// Driver code
 int main()
 {
-    int l = 11, p = 2, q = 3, r = 5;
-
-    int ans = findMaximum(l, p, q, r);
-    cout << ans;
-
+    int arr[] = {3000, 2000, 1000, 3, 10};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << maxSumWO3Consec(arr, n);
     return 0;
 }

@@ -18,12 +18,7 @@ int findMaximum(int n, int x, int y, int z)
         dp[i] = max(p, max(q, r));
     }
 
-    if (dp[n] == -1)
-    {
-        dp[n] = 0;
-    }
-
-    return dp[n];
+    return dp[n] == -1 ? 0 : dp[n];
 }
 
 int main()
