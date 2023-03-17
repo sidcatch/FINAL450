@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//No need to create a new reversed string! see gfg.
 int main()
 {
 
