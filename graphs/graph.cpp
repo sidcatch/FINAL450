@@ -44,7 +44,7 @@ int main()
     g.addEdge('2', '5', 4, 0);
     g.addEdge('6', '5', 2, 0);
     g.addEdge('2', '3', 7, 0);
-    g.addEdge('3', '3', 14, 0);
+    // g.addEdge('3', '3', 14, 0);
     g.addEdge('3', '4', 9, 0);
     g.addEdge('5', '4', 10, 0);
     g.addEdge('7', '6', 1, 0);

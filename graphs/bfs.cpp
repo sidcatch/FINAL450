@@ -68,7 +68,7 @@ class graph
             cout << distances[dest] << endl;
     }
 
-    pair<unordered_map<T, T>, unordered_map<T, int>> bfs(T src)
+    pair<unordered_map<T, T>, unordered_map<T, int>> bfs(T src /* , unordered_map<T, T> &parents, unordered_map<T, int> &distances, unordered_map<T, char> &colors */)
     {
         unordered_map<T, T> parents;
         unordered_map<T, int> distances;
