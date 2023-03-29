@@ -26,7 +26,20 @@ class graph
             this->adjlist[u] = unordered_set<T>{};
     }
 
-    string topologicalVector()
+    void print_adj()
+    {
+        for (auto n : adjlist)
+        {
+            cout << n.first << " : ";
+            for (auto a : n.second)
+            {
+                cout << "( " << a << " ) ";
+            }
+            cout << endl;
+        }
+    }
+
+    void topologicalPrint()
     {
         stack<T> s;
         unordered_map<T, char> colors; // 'g', 'b', 'w'
@@ -37,13 +50,12 @@ class graph
             if (colors[adjListItem.first] == 'w')
                 dfsVisit(adjListItem.first, colors, s);
 
-        string ret{};
         while (!s.empty())
         {
-            ret += s.top();
+            cout << s.top() << " ";
             s.pop();
         }
-        return ret;
+        cout << endl;
     }
 
     void dfsVisit(T current, unordered_map<T, char> &colors, stack<T> &s)
@@ -96,7 +108,7 @@ void alienDictionaryOrderUtil(vector<string> &s, int start, int end, int current
     }
 }
 
-string alienDictionaryOrder(vector<string> &s, int N, int K)
+void alienDictionaryOrder(vector<string> &s, int N, int K)
 {
     graph<char> g;
 
@@ -105,7 +117,9 @@ string alienDictionaryOrder(vector<string> &s, int N, int K)
 
     alienDictionaryOrderUtil(s, 0, N - 1, 0, g);
 
-    return g.topologicalVector();
+    g.print_adj();
+
+    g.topologicalPrint();
 }
 
 int main()
@@ -114,7 +128,22 @@ int main()
     vector<string> s = {"baa", "abcd", "abca", "cab", "cad"};
     int k = 4;
 
-    cout << alienDictionaryOrder(s, s.size(), k) << endl;
+    // vector<string> s = {"caa", "aaa", "aab"};
+    // int k = 3;
+
+    alienDictionaryOrder(s, s.size(), k);
+
+    // graph<char> g;
+    // g.addEdge('b', 'a');
+    // g.addEdge('a', 'c');
+    // g.addEdge('d', 'a');
+    // g.addEdge('b', 'd');
+
+    // g.print_adj();
+
+    // g.topologicalPrint();
+
+    // cout << endl;
 
     return 0;
 }
