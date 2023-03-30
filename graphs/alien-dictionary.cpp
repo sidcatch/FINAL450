@@ -80,12 +80,15 @@ class graph
 void alienDictionaryOrderUtil(vector<string> &s, int start, int end, int currentCharIndex, graph<char> &g)
 {
 
+    //Skip strings containing no character at currentCharIndex (Since the input is in dictionary order, all subsequent strings (if any) should have character at currentCharIndex).
     while (s[start].size() <= currentCharIndex && start != end)
         start++;
 
+    //Skip if only one word (We can't know the dictionary order with one word).
     if (start == end)
         return;
 
+    //Recursive call on strings (contiguous subarrays) containing same character at currentCharIndex.
     int newStart = start;
     int newEnd = start;
     while (newEnd <= end)
@@ -94,10 +97,12 @@ void alienDictionaryOrderUtil(vector<string> &s, int start, int end, int current
             newEnd++;
 
         // cout << newStart << " " << newEnd << endl;
+        //Subarray from newStart to newEnd contains same character at currentCharIndex, so recursively call passing the subarray to check characters at the next position (currentCharIndex + 1).
         alienDictionaryOrderUtil(s, newStart, newEnd, currentCharIndex + 1, g);
 
         newStart = newEnd + 1;
 
+        //We know, character at position currentCharIndex in next subarray comes after the character at currentCharIndex in the previous subarray, so we represent that relation in a directed graph.
         if (newStart <= end)
         {
             // cout << s[newEnd][currentCharIndex] << " " << s[newStart][currentCharIndex] << endl;
