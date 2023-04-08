@@ -18,10 +18,9 @@ int main()
         }
         else
         {
-            {
-                minMax.first = a[0];
-                minMax.second = a[1];
-            }
+
+            minMax.first = a[0];
+            minMax.second = a[1];
         }
 
         i = 2;
