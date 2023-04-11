@@ -7,30 +7,30 @@ int main()
     int a[] = {-2, -3, 4, -1, -2, 1, 5, -3};
     int n = 8;
 
-    int maxSoFar = INT_MIN;
-    int potentialMax = 0;
+    int maxSumFound = INT_MIN;
+    int currentMaxSum = 0;
 
     int start = 0;
     int end = 0;
 
     for (int i = 0; i < n; i++)
     {
-        potentialMax += a[i];
+        currentMaxSum += a[i];
 
-        if (potentialMax > maxSoFar)
+        if (currentMaxSum > maxSumFound)
         {
-            maxSoFar = potentialMax;
+            maxSumFound = currentMaxSum;
             end = i;
         }
 
-        if (potentialMax < 0)
+        if (currentMaxSum < 0)
         {
-            potentialMax = 0;
+            currentMaxSum = 0;
             start = i + 1;
         }
     }
 
-    cout << "Index " << start << " to " << end << " is maximum sum array with sum " << maxSoFar;
+    cout << "Index " << start << " to " << end << " is maximum sum array with sum " << maxSumFound;
 
     cout << endl;
 
