@@ -36,6 +36,31 @@ string lookAndSayNext(string str)
     return res;
 }
 
+string lookAndSayNext2(string str)
+{
+    string res = "";
+
+    int len = str.length();
+
+    for (int i = 0; i < len; i++)
+    {
+
+        int count = 1;
+
+        char currentChar = str[i];
+
+        while (i < (len - 1) && str[i] == str[i + 1])
+        {
+            count++;
+            i++;
+        }
+
+        res += to_string(count) + str[i];
+    }
+
+    return res;
+}
+
 int main()
 {
     int n;
@@ -48,6 +73,25 @@ int main()
     {
         res = lookAndSayNext(res);
         cout << res << "   ";
+
+        // cout << endl;
+        // cout << " ^This is the " << i + 1 << "th number";
+        // cout << endl;
+    }
+
+    cout << endl;
+
+    string res2 = "1";
+    cout << res2 << "   ";
+
+    for (int i = 1; i <= n; i++)
+    {
+        res2 = lookAndSayNext2(res2);
+        cout << res2 << "   ";
+
+        // cout << endl;
+        // cout << " ^This is the " << i + 1 << "th number";
+        // cout << endl;
     }
 
     return 0;

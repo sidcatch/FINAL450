@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//Wrong! loops infinitely if if the first char in a is same as last char in b. Also may not work if there are duplicate chars
 int main()
 {
     string a, b;
