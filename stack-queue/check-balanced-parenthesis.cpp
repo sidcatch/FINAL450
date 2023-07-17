@@ -1,48 +1,59 @@
-// #include <iostream>
-// #include <stack>
-// #include <string>
+#include <iostream>
+#include <stack>
+#include <string>
 
-// using namespace std;
+using namespace std;
 
-// bool isVaild(string &s)
-// {
+bool isBalanced(string a)
+{
+    stack<char> s;
 
-//     if (s.size() == 0)
-//         return true;
+    for (int i = 0; i < a.size(); i++)
+    {
+        switch (a[i])
+        {
+        case '[':
+            s.push(a[i]);
+            break;
+        case '(':
+            s.push(a[i]);
+            break;
+        case '{':
+            s.push(a[i]);
+            break;
+        case ']':
+            if (s.empty() || s.top() != '[')
+                return false;
+            s.pop();
+            break;
+        case ')':
 
-//     stack<int> st;
+            if (s.empty() || s.top() != '(')
+                return false;
+            s.pop();
+            break;
+        case '}':
+            if (s.empty() || s.top() != '{')
+                return false;
+            s.pop();
+            break;
+            // default:
+            //     break;
+        }
+    }
 
-//     int i = 0;
-//     while (i < s.size())
-//     {
-//         if (s[i] == '(')
-//             st.push(s[i]);
-//         else if (!st.empty() /* && st.top() == '(' */)
-//         {
-//             st.pop();
-//         }
-//         else
-//         {
-//             return false;
-//         }
-//         i++;
-//     }
+    if (s.empty())
+        return true;
+    else
+        return false;
+}
 
-//     if (st.empty())
-//         return true;
-//     else
-//         return false;
-// }
+int main()
+{
 
-// int main()
-// {
-//     // string s = "()(())(";
+    string a = "[()]{}{[()()]()}";
 
-//     // string s = "()(())()";
-//     // string s = "()(())((()))";
-//     string s = "((()))(())(";
+    cout << isBalanced(a) << endl;
 
-//     cout << isVaild(s) << endl;
-
-//     return 0;
-// }
+    return 0;
+}
