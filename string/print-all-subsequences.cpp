@@ -12,14 +12,15 @@ void printAllSubsequence(string input, string output = "")
     }
 
     printAllSubsequence(input.substr(1), output);
-
+    // cout << output << " :Not includeing" << endl;
     printAllSubsequence(input.substr(1), output + input[0]);
+    // cout << output << " : Includeing" << endl;
 }
 
 int main()
 {
-
-    printAllSubsequence("abandadgfasd");
+    cout << "start" << endl;
+    printAllSubsequence("abc");
 
     return 0;
 }
