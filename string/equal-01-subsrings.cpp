@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//WRONG!
 int numOfEqual01Substrings(string str)
 {
     int n = str.length();
@@ -25,7 +26,7 @@ int numOfEqual01Substrings(string str)
 
 int main()
 {
-    string s = "0110";
+    string s = "000011";
 
     cout << numOfEqual01Substrings(s) << endl;
 
