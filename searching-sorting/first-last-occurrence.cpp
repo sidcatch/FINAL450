@@ -1,50 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void findFirstAndLastOccurrence(vector<int> &v, int l, int r, int elem, int &firstIndex, int &lastIndex)
+int findFirstOccurrence(vector<int> &a, int x)
 {
-    if (r >= l)
+    int n = a.size();
+    int low = 0, high = n - 1;
+
+    while (low <= high)
     {
-        int mid = l + (r - l) / 2;
 
-        if (v[mid] == elem)
-        {
-            if (mid == 0 || v[mid - 1] < elem)
-                firstIndex = mid;
-            else
-                findFirstAndLastOccurrence(v, l, mid - 1, elem, firstIndex, lastIndex);
-            if (mid == v.size() || v[mid + 1] > elem)
-                lastIndex = mid;
-            else
-                findFirstAndLastOccurrence(v, mid + 1, r, elem, firstIndex, lastIndex);
-        }
+        int mid = (low + high) / 2;
 
-        if (v[mid] > elem)
-            return findFirstAndLastOccurrence(v, l, mid - 1, elem, firstIndex, lastIndex);
-
-        return findFirstAndLastOccurrence(v, mid + 1, r, elem, firstIndex, lastIndex);
+        if (a[mid] > x)
+            high = mid - 1;
+        else if (a[mid] < x)
+            low = mid + 1;
+        else if (a[mid] == x && (mid == 0 || a[mid - 1] < x))
+            return mid;
+        else
+            high = mid - 1;
     }
+
+    return -1;
+}
+
+int findLastOccurrence(vector<int> &a, int x)
+{
+    int n = a.size();
+    int low = 0, high = n - 1;
+
+    while (low <= high)
+    {
+
+        int mid = (low + high) / 2;
+
+        if (a[mid] > x)
+            high = mid - 1;
+        else if (a[mid] < x)
+            low = mid + 1;
+        else if (a[mid] == x && (mid == n - 1 || a[mid + 1] > x))
+            return mid;
+        else
+            low = mid + 1;
+    }
+
+    return -1;
 }
 
 int main()
 {
+    vector<int> a = {1, 3, 5, 5, 5, 5, 67, 123, 125};
 
-    int n;
-    cin >> n;
+    int x = 5;
 
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    int elem;
-    cin >> elem;
-
-    int firstIndex = -1;
-    int lastIndex = -1;
-    findFirstAndLastOccurrence(a, 0, a.size() - 1, elem, firstIndex, lastIndex);
-
-    cout << firstIndex << " " << lastIndex << endl;
+    cout << findFirstOccurrence(a, x) << endl;
+    cout << findLastOccurrence(a, x) << endl;
 
     return 0;
 }
