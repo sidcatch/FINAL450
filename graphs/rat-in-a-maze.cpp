@@ -7,7 +7,9 @@ const string DOWN = "D";
 const string LEFT = "L";
 const string RIGHT = "R";
 
-void dfs(int m[][4], int n, int i, int j, string path)
+const int SIZE = 4;
+
+void dfs(int m[][SIZE], int n, int i, int j, string path)
 {
 
     m[i][j] = -1;
@@ -29,12 +31,12 @@ void dfs(int m[][4], int n, int i, int j, string path)
 
 int main()
 {
-    int n = 4;
-    int m[][4] = {{1, 0, 0, 0},
-                  {1, 1, 0, 1},
-                  {1, 1, 0, 0},
-                  {0, 1, 1, 1}};
-    int visited[][4] = {
+    int n = SIZE;
+    int m[][SIZE] = {{1, 0, 0, 0},
+                     {1, 1, 0, 1},
+                     {1, 1, 0, 0},
+                     {0, 1, 1, 1}};
+    int visited[][SIZE] = {
         {0, 0, 0, 0},
         {0, 0, 0, 0},
         {0, 0, 0, 0},
