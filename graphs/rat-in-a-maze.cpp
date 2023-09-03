@@ -32,16 +32,14 @@ void dfs(int m[][SIZE], int n, int i, int j, string path)
 int main()
 {
     int n = SIZE;
+    // int m[][SIZE] = {{1, 0, 0, 0},
+    //                  {1, 1, 0, 1},
+    //                  {1, 1, 0, 0},
+    //                  {0, 1, 1, 1}};
     int m[][SIZE] = {{1, 0, 0, 0},
+                     {1, 1, 1, 1},
                      {1, 1, 0, 1},
-                     {1, 1, 0, 0},
                      {0, 1, 1, 1}};
-    int visited[][SIZE] = {
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-    };
 
     string path = "";
     int i = 0, j = 0;
