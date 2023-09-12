@@ -84,31 +84,31 @@ void printJobSchedulingPriorityQueue(Job arr[], int n)
     vector<Job> result;
 
     // auto cmp = [](Job left, Job right) { return (left.profit) < (right.profit); };
-    // priority_queue<Job, vector<Job>, decltype(cmp)> maxHeap(cmp);
+    // priority_queue<Job, vector<Job>, decltype(cmp)> relavantJobs(cmp);
 
-    priority_queue<Job, vector<Job>, Comparer> maxHeap;
+    priority_queue<Job, vector<Job>, Comparer> relavantJobs;
 
     for (int i = n - 1; i > -1; i--)
     {
-        int slots_available;
+        int slotsAvailableForRelevantJobs;
         if (i == 0)
         {
-            slots_available = arr[i].deadline;
+            slotsAvailableForRelevantJobs = arr[i].deadline;
         }
         else
         {
-            slots_available = arr[i].deadline - arr[i - 1].deadline;
+            slotsAvailableForRelevantJobs = arr[i].deadline - arr[i - 1].deadline;
         }
 
-        maxHeap.push(arr[i]);
+        relavantJobs.push(arr[i]);
 
-        while (slots_available > 0 && maxHeap.size() > 0)
+        while (slotsAvailableForRelevantJobs > 0 && relavantJobs.size() > 0)
         {
 
-            Job job = maxHeap.top();
-            maxHeap.pop();
+            Job job = relavantJobs.top();
+            relavantJobs.pop();
 
-            slots_available--;
+            slotsAvailableForRelevantJobs--;
 
             result.push_back(job);
         }
