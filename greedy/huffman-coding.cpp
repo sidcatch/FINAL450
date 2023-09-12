@@ -82,7 +82,8 @@ int main()
         minFreqHeap.push(new Node(f[i], &s[i]));
 
     // In Huffman tree there are n leaf node and n-1 nonleaf node, for each loop we are creating a non-leaf node.
-    for (int i = 0; i < n - 1; i++)
+    // for (int i = 0; i < n - 1; i++)
+    while (minFreqHeap.size() > 1)
     {
         Node *left = minFreqHeap.top();
         minFreqHeap.pop();
@@ -106,3 +107,4 @@ int main()
 
     return 0;
 }
+//0 100 101 1100 1101 111
