@@ -12,8 +12,9 @@ int minCashFlow(int graph[N][N])
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
         {
-            credits[i] += graph[i][j];
-            credits[j] -= graph[i][j];
+            //Switching signs here won't effect the answer!
+            credits[i] -= graph[i][j];
+            credits[j] += graph[i][j];
         }
 
     sort(credits.begin(), credits.end());
