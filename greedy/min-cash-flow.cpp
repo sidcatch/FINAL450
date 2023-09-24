@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Check if this is correct!
 int minCashFlow(int graph[N][N])
 {
     vector<int> credits(N, 0);
