@@ -82,14 +82,14 @@ class graph
         distances[src] = 0;
         colors[src] = 'g';
 
-        list<T> queue;
+        queue<T> q;
 
-        queue.push_back(src);
+        q.push(src);
 
-        while (!queue.empty())
+        while (!q.empty())
         {
-            T current = queue.front();
-            queue.pop_front();
+            T current = q.front();
+            q.pop();
 
             for (auto attached : this->adjlist[current])
             {
@@ -99,7 +99,7 @@ class graph
                     colors[attached] = 'g';
                     distances[attached] = distances[current] + 1;
                     parents[attached] = current;
-                    queue.push_back(attached);
+                    q.push(attached);
                 }
             }
 
