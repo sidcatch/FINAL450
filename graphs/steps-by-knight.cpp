@@ -6,6 +6,8 @@ using namespace std;
 
 const int N = 6;
 
+const vector<vector<int>> offsets{{1, 2}, {-1, 2}, {1, -2}, {-1, -2}, {2, 1}, {-2, 1}, {2, -1}, {-2, -1}};
+
 int main()
 {
 
@@ -37,23 +39,27 @@ int main()
             return 0;
         }
 
-        if (i > 0 && j > 1 && dist[i - 1][j - 2] == INT_MAX)
-            q.push({i - 1, j - 2, d + 1});
-        if (i > 0 && j < N - 2 && dist[i - 1][j + 2] == INT_MAX)
-            q.push({i - 1, j + 2, d + 1});
-        if (i < N - 1 && j > 1 && dist[i + 1][j - 2] == INT_MAX)
-            q.push({i + 1, j - 2, d + 1});
-        if (i < N - 1 && j < N - 2 && dist[i + 1][j + 2] == INT_MAX)
-            q.push({i + 1, j + 2, d + 1});
+        for (vector<int> offset : offsets)
+            if (i + offset[0] >= 0 && i + offset[0] <= N - 1 && j + offset[1] >= 0 && j + offset[1] <= N - 1 && dist[i + offset[0]][j + offset[1]] == INT_MAX)
+                q.push({i + offset[0], j + offset[1], d + 1});
 
-        if (j > 0 && i > 1 && dist[i - 2][j - 1] == INT_MAX)
-            q.push({i - 2, j - 1, d + 1});
-        if (j > 0 && i < N - 2 && dist[i + 2][j - 1] == INT_MAX)
-            q.push({i + 2, j - 1, d + 1});
-        if (j < N - 1 && i > 1 && dist[i - 2][j + 1] == INT_MAX)
-            q.push({i - 2, j + 1, d + 1});
-        if (j < N - 1 && i < N - 2 && dist[i + 2][j + 1] == INT_MAX)
-            q.push({i + 2, j + 1, d + 1});
+        // if (i > 0 && j > 1 && dist[i - 1][j - 2] == INT_MAX)
+        //     q.push({i - 1, j - 2, d + 1});
+        // if (i > 0 && j < N - 2 && dist[i - 1][j + 2] == INT_MAX)
+        //     q.push({i - 1, j + 2, d + 1});
+        // if (i < N - 1 && j > 1 && dist[i + 1][j - 2] == INT_MAX)
+        //     q.push({i + 1, j - 2, d + 1});
+        // if (i < N - 1 && j < N - 2 && dist[i + 1][j + 2] == INT_MAX)
+        //     q.push({i + 1, j + 2, d + 1});
+
+        // if (j > 0 && i > 1 && dist[i - 2][j - 1] == INT_MAX)
+        //     q.push({i - 2, j - 1, d + 1});
+        // if (j > 0 && i < N - 2 && dist[i + 2][j - 1] == INT_MAX)
+        //     q.push({i + 2, j - 1, d + 1});
+        // if (j < N - 1 && i > 1 && dist[i - 2][j + 1] == INT_MAX)
+        //     q.push({i - 2, j + 1, d + 1});
+        // if (j < N - 1 && i < N - 2 && dist[i + 2][j + 1] == INT_MAX)
+        //     q.push({i + 2, j + 1, d + 1});
     }
 
     cout << -1 << endl;
