@@ -27,12 +27,16 @@ int main()
         rottenQueue.pop();
 
         for (vector<int> offset : offsets)
-            if (cell[0] + offset[0] < grid.size() && cell[1] + offset[1] < grid[0].size() && grid[cell[0] + offset[0]][cell[1] + offset[1]] == 1)
+        {
+            int x = cell[0] + offset[0];
+            int y = cell[1] + offset[1];
+            if (x >= 0 && y >= 0 && x < grid.size() && y < grid[0].size() && grid[x][y] == 1)
             {
-                grid[cell[0] + offset[0]][cell[1] + offset[1]] = 2;
-                rottenQueue.push({cell[0] + offset[0], cell[1] + offset[1], cell[2] + 1});
+                grid[x][y] = 2;
+                rottenQueue.push({x, y, cell[2] + 1});
                 generation = cell[2] + 1;
             }
+        }
     }
 
     cout << generation << endl;
