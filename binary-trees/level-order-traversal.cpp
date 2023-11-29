@@ -17,7 +17,6 @@ struct Node
 
 void printLevel(Node *root, int level);
 int height(Node *node);
-Node *newNode(int data);
 
 void printLevelOrder(Node *root)
 {
