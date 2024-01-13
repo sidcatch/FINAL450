@@ -33,6 +33,9 @@ using namespace std;
 bool match2(string pattern, string text, int i, int j)
 {
 
+    cout << "i: " << i << " "
+         << "j: " << j << endl;
+
     if (i == pattern.size() && j == text.size())
         return true;
 
@@ -62,17 +65,17 @@ void test(char *first, char *second)
 
 int main()
 {
-    test("g*ks", "geeks");
-    test("ge?ks*", "geeksforgeeks");
+    // test("g*ks", "geeks");
+    // test("ge?ks*", "geeksforgeeks");
     test("g*k", "gee");
-    test("*pqrs",
-         "pqrst");
-    test("abc*bcd", "abcdhghgbcd");
-    test("abc*c?d", "abcd");
+    // test("*pqrs",
+    //      "pqrst");
+    // test("abc*bcd", "abcdhghgbcd");
+    // test("abc*c?d", "abcd");
 
-    test("*c*d", "abcd");
-    test("*?c*d", "abcd");
-    test("geeks**", "geeks");
+    // test("*c*d", "abcd");
+    // test("*?c*d", "abcd");
+    // test("geeks**", "geeks");
 
     cout << endl;
 
