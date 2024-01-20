@@ -60,6 +60,13 @@ int kthSmallest(int a[], int l, int r, int k)
         }
 
         int medOfMedians = (i == 1) ? medians[i - 1] : kthSmallest(medians, 0, i - 1, i / 2);
+        // int medOfMedians;
+        // if (i == 1)
+        //     medOfMedians = medians[0];
+        // else if (i % 2 == 0)
+        //     medOfMedians = findMedian(medians, i - 1);
+        // else
+        //     medOfMedians = findMedian(medians, i);
 
         int pos = partition(a, l, r, medOfMedians);
 
