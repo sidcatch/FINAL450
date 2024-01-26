@@ -5,11 +5,10 @@ int maxProfit(vector<int> &prices)
 {
     int n = prices.size();
 
-    // 2D DP array to store max profit with 0 and 1 stocks
     vector<vector<int>> dp(n, vector<int>(2));
 
-    dp[0][0] = -prices[0];
-    dp[0][1] = 0;
+    dp[0][0] = -prices[0]; // The maximum profit on day i when holding 1 stock.
+    dp[0][1] = 0;          // The maximum profit on day i when holding 0 stocks.
 
     for (int i = 1; i < n; i++)
     {
