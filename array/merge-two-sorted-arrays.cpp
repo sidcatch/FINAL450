@@ -67,11 +67,11 @@ void mergeArray(int a[], int b[], int n, int m)
 
     // Update elements by dividing with maximum element
     for (int i = 0; i < n; i++)
-        a[i] = a[i] / mx;
+        a[i] /= mx;
 
     // Update elements by dividing with maximum element
     for (int i = 0; i < m; i++)
-        b[i] = b[i] / mx;
+        b[i] /= mx;
 }
 
 int main()
