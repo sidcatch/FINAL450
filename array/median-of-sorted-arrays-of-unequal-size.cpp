@@ -17,6 +17,10 @@ double getMedian(int arr1[], int m, int arr2[], int n)
 
     while (low <= high)
     {
+
+        // Partitioning: At each iteration of the binary search, the algorithm calculates partition indices partition1 and partition2. These partitions divide the arrays into two parts such that:
+        // arr1[0..partition1-1] and arr2[0..partition2-1] are on the left side.
+        // arr1[partition1..m-1] and arr2[partition2..n-1] are on the right side.
         int partition1 = (low + high) / 2;
         int partition2 = (m + n + 1) / 2 - partition1;
 
@@ -26,6 +30,8 @@ double getMedian(int arr1[], int m, int arr2[], int n)
         int maxLeft2 = (partition2 == 0) ? INT_MIN : arr2[partition2 - 1];
         int minRight2 = (partition2 == n) ? INT_MAX : arr2[partition2];
 
+        // Check median conditions: The algorithm checks if the partitions are correct for finding the median. For the median to be found, the following conditions must be satisfied:
+        // maxLeft1 <= minRight2 and maxLeft2 <= minRight1.
         if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1)
         {
             if ((m + n) % 2 == 0)
@@ -33,6 +39,7 @@ double getMedian(int arr1[], int m, int arr2[], int n)
             else
                 return max(maxLeft1, maxLeft2);
         }
+        // Adjust partition: If the current partitions don't satisfy the conditions, the algorithm adjusts the partition by moving partition1 to the left or right, depending on the comparison of maxLeft1 and minRight2.
         else if (maxLeft1 > minRight2)
         {
             high = partition1 - 1; // Move partition1 to the left
