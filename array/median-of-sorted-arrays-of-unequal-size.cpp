@@ -24,6 +24,13 @@ double getMedian(int arr1[], int m, int arr2[], int n)
         int partition1 = (low + high) / 2;
         int partition2 = (m + n + 1) / 2 - partition1;
 
+        // Example initial state:
+        // arr1: [-5, 3, 6, 12, 15]
+        // arr2: [-12, -10, -6, -3, 4, 10]
+        // Iteration 1:
+        // Partition 1: 2   // dividing arr1 into [-5, 3] and [6, 12, 15]
+        // Partition 2: 4   // dividing arr2 into [-12, -10, -6, -3, 4] and [10]
+
         int maxLeft1 = (partition1 == 0) ? INT_MIN : arr1[partition1 - 1];
         int minRight1 = (partition1 == m) ? INT_MAX : arr1[partition1];
 
