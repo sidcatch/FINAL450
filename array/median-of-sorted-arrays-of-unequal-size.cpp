@@ -24,20 +24,13 @@ double getMedian(int arr1[], int m, int arr2[], int n)
         int partition1 = (low + high) / 2;
         int partition2 = (m + n + 1) / 2 - partition1;
 
-        // Example initial state:
-        // arr1: [-5, 3, 6, 12, 15]
-        // arr2: [-12, -10, -6, -3, 4, 10]
-        // Iteration 1:
-        // Partition 1: 2   // dividing arr1 into [-5, 3] and [6, 12, 15]
-        // Partition 2: 4   // dividing arr2 into [-12, -10, -6, -3, 4] and [10]
-
         int maxLeft1 = (partition1 == 0) ? INT_MIN : arr1[partition1 - 1];
         int minRight1 = (partition1 == m) ? INT_MAX : arr1[partition1];
 
         int maxLeft2 = (partition2 == 0) ? INT_MIN : arr2[partition2 - 1];
         int minRight2 = (partition2 == n) ? INT_MAX : arr2[partition2];
 
-        // Check median conditions: The algorithm checks if the partitions are correct for finding the median. For the median to be found, the following conditions must be satisfied:
+        // Check if all numbers on the left is less that all the numbers to on the right. For that, the following conditions must be satisfied:
         // maxLeft1 <= minRight2 and maxLeft2 <= minRight1.
         if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1)
         {
@@ -49,11 +42,11 @@ double getMedian(int arr1[], int m, int arr2[], int n)
         // Adjust partition: If the current partitions don't satisfy the conditions, the algorithm adjusts the partition by moving partition1 to the left or right, depending on the comparison of maxLeft1 and minRight2.
         else if (maxLeft1 > minRight2)
         {
-            high = partition1 - 1; // Move partition1 to the left
+            high = partition1 - 1; // Move next partition1 to the left
         }
         else
         {
-            low = partition1 + 1; // Move partition1 to the right
+            low = partition1 + 1; // Move next partition1 to the right
         }
     }
 
