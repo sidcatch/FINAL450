@@ -23,7 +23,49 @@ struct LinkList
         head = nullptr;
     }
 
-    void reverseInGroupsIterative(int k)
+    Node *reverseInGroupsIterative(Node *head, int k)
+    {
+
+        if (!head || k == 1)
+            return head;
+
+        Node *dummy = new Node(-1, head);
+
+        Node *prev = dummy, *curr = dummy, *next = dummy;
+
+        int count = 0;
+        while (curr)
+        {
+            curr = curr->next;
+            count++;
+        }
+
+        while (next)
+        {
+
+            curr = prev->next;
+
+            next = curr->next;
+
+            int toLoop = count > k ? k : count - 1;
+            for (int i = 1; i < toLoop; i++)
+            {
+
+                curr->next = next->next;
+                next->next = prev->next;
+                prev->next = next;
+                next = curr->next;
+            }
+
+            prev = curr;
+
+            count -= k;
+        }
+
+        return dummy->next;
+    }
+
+    void reverseInGroupsIterative2(int k)
     {
         if (k == 1)
             return;
@@ -144,9 +186,12 @@ int main()
 
     l.print();
 
-    l.reverseInGroupsIterative(3);
+    l.reverseInGroupsIterative2(3);
     l.print();
 
     l.head = l.reverseInGroupsRecursive(l.head, 5);
+    l.print();
+
+    l.head = l.reverseInGroupsIterative(l.head, 3);
     l.print();
 }
