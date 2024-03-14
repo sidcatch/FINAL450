@@ -30,7 +30,7 @@ struct LinkList
 
         Node *current = head;
 
-        while (current->next != nullptr)
+        while (current != nullptr && current->next != nullptr)
         {
             if (current->data == current->next->data)
             {
