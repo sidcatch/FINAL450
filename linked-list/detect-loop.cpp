@@ -92,7 +92,7 @@ struct LinkList
                 while (fast->next != slow->next)
                 {
                     fast = fast->next;
-                    slow = fast->next;
+                    slow = slow->next;
                 }
             }
 

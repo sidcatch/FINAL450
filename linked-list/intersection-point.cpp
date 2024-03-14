@@ -39,23 +39,48 @@ struct LinkList
         i->next = head;
     }
 
-    //Wrong!
-    int getLoopPointData()
+    Node *findLoopStart()
     {
-        //if head == nullptr!
+        if (head == nullptr || head->next == nullptr)
+            return nullptr;
 
-        Node *tortise = head;
-        Node *rabbit = head;
+        Node *slow = head;
+        Node *fast = head;
 
-        while (rabbit && rabbit->next != nullptr)
+        while (fast && fast->next)
         {
-            rabbit = rabbit->next->next;
-            tortise = tortise->next;
+            fast = fast->next->next;
+            slow = slow->next;
 
-            if (rabbit == tortise)
-                return rabbit->data;
+            if (slow == fast)
+                break;
         }
-        return -1;
+
+        if (slow == fast)
+        {
+
+            slow = head;
+
+            if (slow == fast)
+            {
+
+                while (fast->next != slow)
+                    fast = fast->next;
+            }
+            else
+            {
+                while (fast->next != slow->next)
+                {
+
+                    fast = fast->next;
+                    slow = slow->next;
+                }
+            }
+
+            return fast->next;
+        }
+
+        return nullptr;
     }
 
     //Wrong!
@@ -81,10 +106,12 @@ struct LinkList
     {
         Node *p = head;
 
-        while (p != nullptr)
+        int count = 0;
+        while (p != nullptr && count < 25)
         {
             cout << p->data << " ";
             p = p->next;
+            count++;
         }
         cout << endl;
     }
@@ -149,8 +176,7 @@ int main()
     l2.push(new Node(19));
     l2.print();
     l2.makeLoop();
-    //l2.print();
+    // l1.print();
 
-    cout << l1.getLoopPointData() << endl;
-    cout << l2.getLoopPointData() << endl;
+    cout << l1.findLoopStart()->data << endl;
 }
