@@ -52,7 +52,10 @@ struct LinkList
             tortise = next;
         }
 
-        if (rabbit != nullptr)
+        Node *restorePrev = tortise;
+        Node *restoreCurr = nextStore;
+
+        if (rabbit != nullptr) // if odd
             tortise = tortise->next;
 
         while (tortise != nullptr)
@@ -68,6 +71,16 @@ struct LinkList
             nextStore = nextStore->next;
         }
         cout << endl;
+
+        Node *restoreNext = nullptr;
+
+        while (restoreCurr)
+        {
+            restoreNext = restoreCurr->next;
+            restoreCurr->next = restorePrev;
+            restorePrev = restoreCurr;
+            restoreCurr = restoreNext;
+        }
     }
 
     void print()
@@ -97,10 +110,12 @@ int main()
     l.push(2);
     l.push(3);
     l.push(7);
-    l.push(8);
+    // l.push(8);
     //l.push(9);
 
     l.print();
 
     l.isPalindrome();
+
+    l.print();
 }
