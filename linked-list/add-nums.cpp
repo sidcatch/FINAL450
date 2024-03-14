@@ -42,7 +42,9 @@ struct LinkList
         {
             sum = carry + (a ? a->data : 0) + (b ? b->data : 0);
 
-            carry = (sum >= 10) ? 1 : 0;
+            // carry = (sum >= 10) ? 1 : 0;
+
+            carry = sum / 10;
 
             sum = sum % 10;
 
