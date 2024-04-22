@@ -13,6 +13,7 @@ void printGrid(int grid[N][N])
         }
         cout << endl;
     }
+    cout << endl;
 }
 
 void init(int grid[N][N], unordered_set<int> colNums[N], unordered_set<int> rowNums[N], unordered_set<int> subBoxNums[3][3])
@@ -57,7 +58,7 @@ bool findFreeLocation(int grid[N][N], int &col, int &row)
 {
     for (row = 0; row < N; row++)
         for (col = 0; col < N; col++)
-            if (grid[row][col] != 0)
+            if (grid[row][col] == 0)
                 return true;
 
     return false;
