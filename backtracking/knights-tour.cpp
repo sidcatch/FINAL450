@@ -21,10 +21,10 @@ bool isValid(vector<vector<bool>> &visited, int i, int j)
 {
     int n = visited.size();
 
-    if (i > n - 1 || j > n - 1 || i < 0 || j < 0)
-        return false;
+    if (i >= 0 && j >= 0 && i < n && j < n && !visited[i][j])
+        return true;
 
-    return !visited[i][j];
+    return false;
 }
 
 bool knightsTour(vector<vector<bool>> &visited, int i, int j, vector<int> &path)
@@ -34,7 +34,7 @@ bool knightsTour(vector<vector<bool>> &visited, int i, int j, vector<int> &path)
 
     int n = visited.size();
 
-    if (path.size() == n * n - 1)
+    if (path.size() == n * n - 1) // Wrong!
     {
         for (int position : path)
             cout << position << " ";
