@@ -62,7 +62,7 @@ bool findFreeLocation(vector<vector<vector<string>>> &grid, int &row, int &col)
     return false;
 }
 
-void transversal(vector<vector<vector<string>>> &grid)
+void traversal(vector<vector<vector<string>>> &grid)
 {
     int n = grid.size();
     for (int k = 0; k < n; k++)
@@ -81,7 +81,7 @@ void transversal(vector<vector<vector<string>>> &grid)
     }
 }
 
-void transversal2(vector<vector<vector<string>>> &grid)
+void traversal2(vector<vector<vector<string>>> &grid)
 {
 
     int n = grid.size();
@@ -309,7 +309,7 @@ int main()
     init(gridLeftBorder, gridRightBorder, gridBottomBorder, leftBorder, rightBorder, bottomBorder);
 
     if (solveTrianglePuzzle(grid, gridLeftBorder, gridRightBorder, gridBottomBorder, trianglePieces))
-        transversal2(grid);
+        traversal2(grid);
     else
         cout << "Cannot be solved!" << endl;
 
