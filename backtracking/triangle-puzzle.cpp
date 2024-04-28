@@ -186,7 +186,7 @@ vector<string> getAdjTrianglePiece(vector<vector<vector<string>>> &grid, vector<
             return gridBottomBorder[adjPos[0]];
     }
     // else
-    //     return vector<string>{};
+    return vector<string>{};
 }
 
 bool isValidPlacement(vector<vector<vector<string>>> &grid, vector<vector<string>> &gridLeftBorder, vector<vector<string>> &gridRightBorder, vector<vector<string>> &gridBottomBorder, int i, int j, vector<string> &trianglePiece)
