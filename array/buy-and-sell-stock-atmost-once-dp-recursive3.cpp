@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int findMaximumProfit(int i, vector<int> &prices, bool sell, vector<vector<int>> &v)
+int findMaximumProfit(vector<int> &prices, int i, bool sell, vector<vector<int>> &v)
 {
 
     if (i == prices.size())
@@ -14,13 +14,13 @@ int findMaximumProfit(int i, vector<int> &prices, bool sell, vector<vector<int>>
     {
 
         return v[i][sell] = max(prices[i],
-                                findMaximumProfit(i + 1, prices, sell, v));
+                                findMaximumProfit(prices, i + 1, sell, v));
     }
     else
     {
 
-        return v[i][sell] = max(-prices[i] + findMaximumProfit(i + 1, prices, true, v),
-                                findMaximumProfit(i + 1, prices, sell, v));
+        return v[i][sell] = max(-prices[i] + findMaximumProfit(prices, i + 1, true, v),
+                                findMaximumProfit(prices, i + 1, sell, v));
     }
 }
 
@@ -30,7 +30,7 @@ int maxProfit(vector<int> &prices)
     int n = prices.size();
     vector<vector<int>> v(n, vector<int>(2, -1));
 
-    return findMaximumProfit(0, prices, false, v);
+    return findMaximumProfit(prices, 0, false, v);
 }
 
 int main()
