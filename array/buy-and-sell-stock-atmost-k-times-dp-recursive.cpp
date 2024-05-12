@@ -40,7 +40,7 @@ int maxProfit(vector<int> &prices, int k)
     int n = prices.size();
     vector<vector<int>> v(n, vector<int>(2, -1));
 
-    return findMaximumProfit(prices, 0, k, 1, v); //Selling and then buying , so we will be left with 1 stock (buy is 1)
+    return findMaximumProfit(prices, 0, k, 1, v);
 }
 
 int main()
