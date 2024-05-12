@@ -28,7 +28,7 @@ int maxProfit(vector<int> &prices)
     int n = prices.size();
     vector<vector<int>> v(n, vector<int>(2, -1));
 
-    return findMaximumProfit(prices, 0, 1, v);
+    return findMaximumProfit(prices, 0, true, v);
 }
 
 int main()
