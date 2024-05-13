@@ -9,8 +9,8 @@ int maxProfit(vector<int> &prices)
 
     vector<vector<int>> dp(n, vector<int>(2));
 
-    dp[0][0] = -prices[0]; // The maximum profit on day i when holding 1 stock or can not sell
-    dp[0][1] = 0;          // The maximum profit on day i when holding 0 stocks or can sell
+    dp[0][0] = -prices[0]; // The maximum profit on day i when holding 1 stock or not sold
+    dp[0][1] = 0;          // The maximum profit on day i when holding 0 stocks or sold
 
     for (int i = 1; i < n; i++)
     {
