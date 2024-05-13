@@ -3,6 +3,29 @@ using namespace std;
 
 // Also see, buy-and-sell-stock-atmost-once-dp-recursive2.cpp
 
+// void printDP(vector<vector<int>> dp)
+// {
+//     for (int i = 0; i < dp.size(); i++)
+//     {
+//         // Truncate numbers if they are greater than 9999 or smaller than -999
+//         int value0 = min(max(dp[i][0], -999), 9999);
+//         int value1 = min(max(dp[i][1], -999), 9999);
+
+//         // Output each number with exactly 4 spaces
+//         cout << setw(4) << value0 << " ";
+//     }
+//     cout << endl;
+//     for (int i = 0; i < dp.size(); i++)
+//     {
+//         // Truncate numbers if they are greater than 9999 or smaller than -999
+//         int value1 = min(max(dp[i][1], -999), 9999);
+
+//         // Output each number with exactly 4 spaces
+//         cout << setw(4) << value1 << " ";
+//     }
+//     cout << endl;
+// }
+
 int maxProfit(vector<int> &prices)
 {
     int n = prices.size();
