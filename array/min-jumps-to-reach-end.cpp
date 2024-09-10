@@ -23,7 +23,7 @@ int minJumps(int arr[], int n)
 
         if (i == n - 1)
             return currJump;
-        if (arr[i] >= (n - 1) - i)
+        if (arr[i] + 1 >= (n - 1))
             return currJump + 1;
 
         currMaxReach = max(currMaxReach, i + arr[i]);
