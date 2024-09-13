@@ -143,8 +143,8 @@ struct LinkList
             count++;
         }
 
-        if (next != nullptr)
-            head->next = reverseInGroupsRecursive(next, k);
+        // if (next != nullptr)
+        head->next = reverseInGroupsRecursive(next, k);
 
         return prev;
     }
