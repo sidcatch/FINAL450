@@ -11,16 +11,16 @@ int main()
     if (prices.empty() || prices.size() == 1)
         return 0;
 
-    int minimum = prices[0];
+    int minimumSoFar = prices[0];
     int profit = 0;
 
     for (int i = 1; i < prices.size(); i++)
     {
-        if (prices[i] > minimum)
-            profit = max(profit, prices[i] - minimum);
+        if (prices[i] > minimumSoFar)
+            profit = max(profit, prices[i] - minimumSoFar);
 
-        if (prices[i] < minimum)
-            minimum = prices[i];
+        if (prices[i] < minimumSoFar)
+            minimumSoFar = prices[i];
     }
 
     cout << profit << endl;
