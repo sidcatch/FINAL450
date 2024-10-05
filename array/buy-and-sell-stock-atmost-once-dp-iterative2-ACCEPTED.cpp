@@ -3,6 +3,9 @@ using namespace std;
 
 // Also see, buy-and-sell-stock-atmost-once-dp-recursive2.cpp
 
+void printVector(vector<int> &v);
+void printDP(vector<vector<int>> &dp);
+
 int maxProfit(vector<int> &prices)
 {
     int n = prices.size();
@@ -21,8 +24,8 @@ int maxProfit(vector<int> &prices)
     printVector(prices);
     printDP(dp);
 
-    return max(dp.back()[0], dp.back()[1]);
-    // return dp.back()[0];
+    // return max(dp.back()[0], dp.back()[1]);
+    return dp.back()[0];
 }
 
 int main()
