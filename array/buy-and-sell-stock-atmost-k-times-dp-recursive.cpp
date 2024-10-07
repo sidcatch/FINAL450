@@ -4,22 +4,22 @@ using namespace std;
 
 //See gfg for more methods of solving!
 
-int findMaximumProfit(vector<int> &prices, int i, int k, bool holding, vector<vector<int>> &v)
+int findMaximumProfit(vector<int> &prices, int i, int k, bool buy, vector<vector<int>> &v)
 {
 
     if (i >= prices.size() || k <= 0)
         return 0;
 
-    if (v[i][holding] != -1)
-        return v[i][holding];
+    if (v[i][buy] != -1)
+        return v[i][buy];
 
-    if (holding)
-        return v[i][holding] = max(-prices[i] + findMaximumProfit(prices, i + 1, k, !holding, v),
-                                   findMaximumProfit(prices, i + 1, k, holding, v));
+    if (buy)
+        return v[i][buy] = max(-prices[i] + findMaximumProfit(prices, i + 1, k, !buy, v),
+                               findMaximumProfit(prices, i + 1, k, buy, v));
 
     else
-        return v[i][holding] = max(prices[i] + findMaximumProfit(prices, i + 1, k - 1, !holding, v), //Here one transaction is complete so we subtract k.
-                                   findMaximumProfit(prices, i + 1, k, holding, v));
+        return v[i][buy] = max(prices[i] + findMaximumProfit(prices, i + 1, k - 1, !buy, v), //Here one transaction is complete so we subtract k.
+                               findMaximumProfit(prices, i + 1, k, buy, v));
 }
 
 int maxProfit(vector<int> &prices, int k)
