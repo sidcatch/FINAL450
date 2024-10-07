@@ -18,11 +18,11 @@ int findMaximumProfit(vector<int> &prices, int i, bool holding, vector<vector<in
 
     if (holding)
         return v[i][true] = max(-prices[i],
-                                findMaximumProfit(prices, i - 1, true, v));
+                                findMaximumProfit(prices, i - 1, true, v)); // The maximum profit on day i when holding 1 stock or bought today or earlier
     else
         return v[i][false] = max(prices[i] + findMaximumProfit(
                                                  prices, i - 1, true, v),
-                                 findMaximumProfit(prices, i - 1, false, v));
+                                 findMaximumProfit(prices, i - 1, false, v)); // The maximum profit on day i when holding 0 stocks or not bought/sold today or earlier
 }
 
 int maxProfit(vector<int> &prices)
