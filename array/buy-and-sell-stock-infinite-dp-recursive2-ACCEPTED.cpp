@@ -17,7 +17,7 @@ int findMaximumProfit(vector<int> &prices, int i, bool canBuy, vector<vector<int
         return v[i][canBuy];
 
     if (canBuy)
-        return v[i][true] = max(-prices[i],
+        return v[i][true] = max(-prices[i] + findMaximumProfit(prices, i - 1, false, v),
                                 findMaximumProfit(prices, i - 1, true, v));
     else
         return v[i][false] = max(prices[i] + findMaximumProfit(
