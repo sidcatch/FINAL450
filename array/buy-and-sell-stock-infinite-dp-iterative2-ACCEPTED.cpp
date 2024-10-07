@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Also see, buy-and-sell-stock-atmost-once-dp-recursive2.cpp
+// Also see, buy-and-sell-stock-infinite-dp-recursive2-ACCEPTED.cpp
 
 void printVector(vector<int> &v);
 void printDP(vector<vector<int>> &dp);
