@@ -2,21 +2,21 @@
 #include <iostream>
 using namespace std;
 
-int findMaximumProfit(vector<int> &prices, int i, bool canBuy, vector<vector<int>> &v)
+int findMaximumProfit(vector<int> &prices, int i, bool holding, vector<vector<int>> &v)
 {
 
     if (i < 0)
         return 0;
 
-    if (i == 0 && canBuy)
-        return v[i][canBuy] = -prices[0];
-    if (i == 0 && !canBuy)
-        return v[i][canBuy] = 0;
+    if (i == 0 && holding)
+        return v[i][holding] = -prices[0];
+    if (i == 0 && !holding)
+        return v[i][holding] = 0;
 
-    if (v[i][canBuy] != -1)
-        return v[i][canBuy];
+    if (v[i][holding] != -1)
+        return v[i][holding];
 
-    if (canBuy)
+    if (holding)
         return v[i][true] = max(-prices[i] + findMaximumProfit(prices, i - 1, false, v),
                                 findMaximumProfit(prices, i - 1, true, v));
     else
