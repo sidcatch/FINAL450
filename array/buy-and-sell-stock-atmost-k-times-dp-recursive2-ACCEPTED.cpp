@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-//See gfg for more methods of solving!
-
 int findMaximumProfit(vector<int> &prices, int i, int k, bool holding, vector<vector<vector<int>>> &v)
 {
 
