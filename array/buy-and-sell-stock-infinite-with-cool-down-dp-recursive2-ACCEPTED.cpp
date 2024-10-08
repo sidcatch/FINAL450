@@ -16,10 +16,10 @@ int findMaximumProfit(vector<int> &prices, int i, bool holding, vector<vector<in
         return v[i][holding];
 
     if (holding)
-        return v[i][holding] = max(prices[i] + findMaximumProfit(prices, i - 2, !holding, v),
+        return v[i][holding] = max(-prices[i] + findMaximumProfit(prices, i - 2, !holding, v),
                                    findMaximumProfit(prices, i - 1, holding, v));
     else
-        return v[i][holding] = max(-prices[i] + findMaximumProfit(prices, i - 1, !holding, v),
+        return v[i][holding] = max(prices[i] + findMaximumProfit(prices, i - 1, !holding, v),
                                    findMaximumProfit(prices, i - 1, holding, v));
 }
 
@@ -33,7 +33,7 @@ int maxProfit(vector<int> &prices)
 
 int main()
 {
-    vector<int> prices = {1, 2};
+    vector<int> prices = {1, 2, 3, 0, 2};
 
     int ans = maxProfit(prices);
 
