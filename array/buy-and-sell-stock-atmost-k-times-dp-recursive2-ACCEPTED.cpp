@@ -28,17 +28,17 @@ int findMaximumProfit(vector<int> &prices, int i, int k, bool holding, vector<ve
 int maxProfit(vector<int> &prices, int k)
 {
 
-    // // If transactions are greater than number of prices, then solve same as when infinite transactions are allowed
+    // If transactions are greater than number of prices, then solve same as when infinite transactions are allowed
 
-    // if (2 * k > prices.size())
-    // {
-    //     int res = 0;
-    //     for (int i = 1; i < prices.size(); i++)
-    //     {
-    //         res += max(0, prices[i] - prices[i - 1]);
-    //     }
-    //     return res;
-    // }
+    if (2 * k > prices.size())
+    {
+        int res = 0;
+        for (int i = 1; i < prices.size(); i++)
+        {
+            res += max(0, prices[i] - prices[i - 1]);
+        }
+        return res;
+    }
 
     int n = prices.size();
     vector<vector<vector<int>>> v(n, vector<vector<int>>(k + 1, vector<int>(2, -1)));
