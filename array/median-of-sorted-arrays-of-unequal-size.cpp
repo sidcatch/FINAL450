@@ -15,14 +15,16 @@ double getMedian(int arr1[], int m, int arr2[], int n)
 
     int low = 0, high = m; // Initialize binary search range for the smaller array
 
+    int totalNumOfElmOnLeft = (m + n + 1) / 2; // Gives the midpoint of the total combined array size (using +1 to handle both even and odd lengths).
+
     while (low <= high)
     {
 
         // Partitioning: At each iteration of the binary search, the algorithm calculates partition indices partition1 and partition2. These partitions divide the arrays into two parts such that:
-        // arr1[0..partition1-1] and arr2[0..partition2-1] are on the left side.
-        // arr1[partition1..m-1] and arr2[partition2..n-1] are on the right side.
+        // arr1[0..partition1-1] and arr2[0..partition2-1] are on the left side of the imaginary merged array.
+        // arr1[partition1..m-1] and arr2[partition2..n-1] are on the right side of the imaginary merged array.
         int partition1 = (low + high) / 2;
-        int partition2 = (m + n + 1) / 2 - partition1;
+        int partition2 = totalNumOfElmOnLeft - partition1; // By subtracting partition1, we get partition2, the appropriate division point for arr2.
 
         int maxLeft1 = (partition1 == 0) ? INT_MIN : arr1[partition1 - 1];
         int minRight1 = (partition1 == m) ? INT_MAX : arr1[partition1];
