@@ -13,9 +13,9 @@ double getMedian(int arr1[], int m, int arr2[], int n)
         swap(m, n);
     }
 
-    int low = 0, high = m; // Initialize binary search range for the smaller array
+    int low = 0, high = m; // Initialize binary search range for the smaller array. Changing it to high = m - 1 would make the algorithm incorrect because it excludes the possibility of partition1 = m, which is necessary for handling case where the right partition of arr1 is empty. For example consider smaller array containing a single element, if the line low = partition1 + 1 executes, low > high skipping/not consider the case where the right partition of arr1 is empty.
 
-    int totalNumOfElmOnLeft = (m + n + 1) / 2; // Gives the midpoint of the total combined array size (using +1 to handle both even and odd lengths).
+    int totalNumOfElmOnLeft = (m + n + 1) / 2; // The expression (m + n + 1) / 2 ensures that when the total length of the combined arrays (m + n) is odd, the left side has one more element than the right side. Notice below when total lenght is odd we only check the numbers on the left to get the mediam (max(maxLeft1, maxLeft2)).
 
     while (low <= high)
     {
