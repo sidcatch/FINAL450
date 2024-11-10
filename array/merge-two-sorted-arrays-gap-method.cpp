@@ -9,7 +9,7 @@ void mergeArrays(vector<int> &a, vector<int> &b)
 {
     int m = a.size();
     int n = b.size();
-    int gap = (m + n) / 2;
+    int gap = (m + n + 1) / 2;
 
     while (gap > 0)
     {
@@ -39,9 +39,10 @@ void mergeArrays(vector<int> &a, vector<int> &b)
             i++;
             j++;
         }
-
+        if (gap == 1)
+            break;
         // Calculate the next gap
-        gap = (gap) / 2;
+        gap = (gap + 1) / 2;
     }
 }
 
