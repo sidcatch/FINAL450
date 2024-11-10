@@ -18,10 +18,12 @@ int findKthElement(const vector<int> &arr1, const vector<int> &arr2, int k)
     int low = max(0, k - m);
     int high = min(k, n);
 
+    int totalNumOfElmOnLeft = k;
+
     while (low <= high)
     {
         int cut1 = (low + high) / 2;
-        int cut2 = k - cut1;
+        int cut2 = totalNumOfElmOnLeft - cut1;
 
         int left1 = (cut1 == 0) ? INT_MIN : arr1[cut1 - 1];
         int left2 = (cut2 == 0) ? INT_MIN : arr2[cut2 - 1];
