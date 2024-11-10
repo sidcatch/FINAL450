@@ -46,6 +46,12 @@ void mergeArrays(vector<int> &a, vector<int> &b)
     }
 }
 
+// (m + n + 1) / 2, (gap + 1) / 2 and the if (gap == 1) break ensures that:
+
+// The gap sequence always includes 1
+// The algorithm performs one full pass with gap=1
+// The loop terminates properly after processing gap=1
+
 int main()
 {
     vector<int> a = {1, 5, 9, 10, 15, 20};
