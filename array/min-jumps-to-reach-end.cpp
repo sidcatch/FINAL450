@@ -14,7 +14,7 @@ int minJumps(int arr[], int n)
         return -1;
 
     int currMaxReach = arr[0];
-    int stepsLeftInCurrJump = arr[0];
+    int stepsLeft = arr[0];
     int currJump = 1;
 
     int i = 1;
@@ -27,14 +27,14 @@ int minJumps(int arr[], int n)
             return currJump + 1;
 
         currMaxReach = max(currMaxReach, i + arr[i]);
-        stepsLeftInCurrJump--;
+        stepsLeft--;
 
-        if (stepsLeftInCurrJump == 0)
+        if (stepsLeft == 0)
         {
             currJump++;
             if (i >= currMaxReach)
                 return -1;
-            stepsLeftInCurrJump = currMaxReach - i;
+            stepsLeft = currMaxReach - i;
         }
     }
 
