@@ -35,7 +35,9 @@ int maxProfit(vector<int> &prices, int k)
     // Fill the dp table
     for (int i = 1; i < n; i++)
     {
-        for (int j = k; j > 0; j--)
+
+        // for (int j = k; j > 0; j--)
+        for (int j = 1; j <= k; j++)
         {
             // Holding a stock
             dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
