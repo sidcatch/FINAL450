@@ -38,7 +38,7 @@ void rabinKarpMatcher(const string &T, const string &P, int d, int q)
 
     // MATCHING PHASE
     // Slide the pattern over text one position at a time
-    for (int s = 0; s <= n - m; s++)
+    for (int i = 0; i <= n - m; i++)
     {
         // If hash values match, check for spurious hit
         if (p == t)
@@ -48,7 +48,7 @@ void rabinKarpMatcher(const string &T, const string &P, int d, int q)
             bool match = true;
             for (int j = 0; j < m; j++)
             {
-                if (T[s + j] != P[j])
+                if (T[i + j] != P[j])
                 {
                     match = false;
                     break;
@@ -56,16 +56,16 @@ void rabinKarpMatcher(const string &T, const string &P, int d, int q)
             }
             if (match)
             {
-                cout << "Pattern occurs with shift " << s << endl;
+                cout << "Pattern occurs with shift " << i << endl;
             }
         }
 
         // Compute hash for next window using rolling hash technique
-        // Remove leading digit (T[s]) and add trailing digit (T[s+m])
-        // Formula: t_new = (d * (t_old - T[s] * h) + T[s+m]) % q
-        if (s < n - m)
+        // Remove leading digit (T[i]) and add trailing digit (T[i+m])
+        // Formula: t_new = (d * (t_old - T[i] * h) + T[i+m]) % q
+        if (i < n - m)
         {
-            t = (d * (t - T[s] * h) + T[s + m]) % q;
+            t = (d * (t - T[i] * h) + T[i + m]) % q;
 
             // Ensure t is non-negative (modulo operation can produce negative values)
             if (t < 0)
