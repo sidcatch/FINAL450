@@ -11,7 +11,7 @@ void preprocessSuffix(int *shift, int *borderPosition, char *pattern, int m)
     // borderPosition[i] should be start position of border of suffix starting at i. if no border of a suffix exists then start position of border is taken as m. For example, for a pattern aabbccaacc, at postion i=4, the suffix is ccaacc, and the widest border for that is cc (p[8]p[9]), so j = f[i=4] = 8.
     // Observation:- If y == borderPosition[x] and y < m, then p[x] == p[y].
 
-    borderPosition[i] = j;
+    borderPosition[i] = j; // Initialize borderPosition[m] = m + 1. This is the base case: at position m (beyond the pattern), there is no suffix, so the border position is set to m + 1 (indicating no valid border).
 
     // Find borderPosition[i] from i = m to 0.
     while (i > 0)
