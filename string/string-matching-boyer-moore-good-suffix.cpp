@@ -52,7 +52,7 @@ using namespace std;
  *    
  *    i=7: suffix = "B"       → no border → borderPosition[7] = 8
  *    i=6: suffix = "AB"      → no border → borderPosition[6] = 8
- *    i=5: suffix = "BAB"     → no border → borderPosition[5] = 8
+    i=5: suffix = "BAB"     → border "B" at index 7 → borderPosition[5] = 7
  *    i=4: suffix = "ABAB"    → border "AB" at index 6 → borderPosition[4] = 6
  *    i=3: suffix = "CABAB"   → no border → borderPosition[3] = 8
  *    i=2: suffix = "ACABAB"  → no border → borderPosition[2] = 8
@@ -61,7 +61,7 @@ using namespace std;
  *    
  *    Final arrays:
  *    i:               0  1  2  3  4  5  6  7  8
- *    borderPosition:  4  8  8  8  6  8  8  8  9
+ *    borderPosition:  4  8  8  8  6  7  8  8  9
  */
 void preprocessSuffix(int *shift, int *borderPosition, char *pattern, int m)
 {
@@ -136,7 +136,7 @@ void preprocessSuffix(int *shift, int *borderPosition, char *pattern, int m)
  * After preprocessSuffix:
  *    i:              0  1  2  3  4  5  6  7  8
  *    shift:          0  0  0  0  0  0  0  3  0
- *    borderPosition: 4  8  8  8  6  8  8  8  9
+ *    borderPosition: 4  8  8  8  6  7  8  8  9
  * 
  * borderPosition[0] = 4 means pattern has border "ABAB" starting at index 4
  * 
@@ -307,7 +307,7 @@ void boyerMooreAlgorithm(char *text, char *pattern)
  * ----------------------
  * Pattern:          A  B  A  C  A  B  A  B
  * Index:            0  1  2  3  4  5  6  7
- * borderPosition:   4  8  8  8  6  8  8  8  (and [8]=9)
+ * borderPosition:   4  8  8  8  6  7  8  8  (and [8]=9)
  * shift:            4  4  4  4  4  4  4  3  (and [8]=4)
  * 
  * SEARCH TRACE:
